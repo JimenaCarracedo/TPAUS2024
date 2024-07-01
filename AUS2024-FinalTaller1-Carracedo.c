@@ -358,10 +358,11 @@ int main()
             anotar(lanzar_dado(lanzada), jugador1);
             imprimir_puntajes(jugador1);
             printf("\n");
+            printf("PUNTAJES DEL JUGADOR 1\n");
+            imprimir_puntajes(jugador1);
         }
         }
 
-            printf("PUNTAJES DEL JUGADOR 1\n");
-            imprimir_puntajes(jugador1);
+
 }
 }
