@@ -9,7 +9,7 @@
 #define F (30)
 int jugador1[J]={-1,-1,-1,-1,-1,-1,-1,-1, -1,-1};
 int jugador2[J]={-1,-1,-1,-1,-1,-1,-1,-1, -1,-1};
-char *juego[J]={"1       ", "2       ", "3       ", "4       ", "5       ", "6       ", "G       ", "E        ", "P       ", "F       "};
+char *juego[J]={"1", "2", "3", "4", "5", "6", "G", "E", "P", "F"};
 int lanzada[P];
 int puntaje_del_juego[J];
 int lanzar_dado(int lanzada[P]){
@@ -304,11 +304,11 @@ return 0;
 }
 int imprimir_puntajes(int puntaje_del_juego[J]){
         for(int i=0; i<J; i++){
-            printf("%s", juego[i]);
+            printf("%s\t", juego[i]);
         }
         printf("\n");
         for(int j=0; j<J; j++){
-            printf("%d      ", puntaje_del_juego[j]);
+            printf("%d\t", puntaje_del_juego[j]);
         }
         return 0;
 }
@@ -327,14 +327,23 @@ int main()
             if(jugador1[6]!=100){
             printf("Tiro %d del jugador 1\n", i+1);
             anotar(lanzar_dado(lanzada), jugador1);
+            printf("PUNTAJES DEL JUGADOR 1\n");
             imprimir_puntajes(jugador1);
+            printf("\n");
+            printf("PUNTAJES DEL JUGADOR 2\n");
+            imprimir_puntajes(jugador2);
             printf("\n");
             if(jugador2[6]!=100&&jugador1[6]!=100){
             printf("Tiro %d del jugador 2\n", i+1);
             anotar(lanzar_dado(lanzada), jugador2);
-            imprimir_puntajes(jugador2);
+            //imprimir_puntajes(jugador2);
             printf("\n");
             }
+            printf("PUNTAJES DEL JUGADOR 1\n");
+            imprimir_puntajes(jugador1);
+            printf("\n");
+            printf("PUNTAJES DEL JUGADOR 2\n");
+            imprimir_puntajes(jugador2);
         }
         }
             printf("PUNTAJES DEL JUGADOR 1\n");
