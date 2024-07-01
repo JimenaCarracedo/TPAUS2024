@@ -51,6 +51,10 @@ int lanzar_dado(int lanzada[P]){
         printf("Cual? 1-2-3-4-5 ---> 0  para no ingresar mas dados \n");
             cont1--;
             scanf("%d", &d);
+            while(d<0||d>5){
+                printf("debe ingresar un numero entre el 1 y el 5 o 0 para finalizar \n");
+                scanf("%d", &d);
+            }
             lanzada3[d-1]=(rand()%6)+1;
             }while(d!=0);
             printf("desea confirmar los dados ingresados? S o N\n");
