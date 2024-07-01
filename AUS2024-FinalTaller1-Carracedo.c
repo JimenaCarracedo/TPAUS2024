@@ -360,6 +360,7 @@ int main()
             printf("\n");
             printf("PUNTAJES DEL JUGADOR 1\n");
             imprimir_puntajes(jugador1);
+            printf("\n");
         }
         }
 
