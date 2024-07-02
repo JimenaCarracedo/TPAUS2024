@@ -18,11 +18,20 @@ int lanzar_dado(int lanzada[P]){
     int i;
     char c;
     for(i=0; i<P; i++){
-        lanzada[i]=(rand()%6)+1;
+        lanzada[i]=5;
 
     }
+    printf("\n");
     for(i=0; i<P; i++){
-        printf("%d ", lanzada[i]);
+        printf("  -   ");
+    }
+    printf("\n");
+    for(i=0; i<P; i++){
+        printf("| %d | ", lanzada[i]);
+    }
+    printf("\n");
+    for(i=0; i<P; i++){
+        printf("  -   ");
     }
     printf("\n");
     char l;
@@ -31,10 +40,12 @@ int lanzar_dado(int lanzada[P]){
     int cont1=2;
     while(cont<2){
     cont++;
-    printf("quiere volver a lanzar dados? S/N\n");
+    printf("> Quiere volver a lanzar dados? S/N\n");
+    printf("___________________________________\n");
     scanf(" %c", &l);
     while(l!='S'&&l!='s'&&l!='N'&&l!='n'){
-        printf("debe ingresar S o N\n");
+        printf("> Debe ingresar S o N\n");
+        printf("_____________________\n");
         scanf(" %c", &l);
     }
     if(l=='S'||l=='s'){
@@ -48,19 +59,23 @@ int lanzar_dado(int lanzada[P]){
             }
         do{
 
-        printf("Cual? 1-2-3-4-5 ---> 0  para no ingresar mas dados \n");
+        printf("> Cual? 1-2-3-4-5 ---> 0  Para no ingresar mas dados \n");
+        printf("____________________________________________________\n");
             cont1--;
             scanf("%d", &d);
             while(d<0||d>5){
-                printf("debe ingresar un numero entre el 1 y el 5 o 0 para finalizar \n");
+                printf(">Debe ingresar un numero entre el 1 y el 5 o 0 para finalizar \n");
+                printf("_____________________________________________________________\n");
                 scanf("%d", &d);
             }
             lanzada3[d-1]=(rand()%6)+1;
             }while(d!=0);
-            printf("desea confirmar los dados ingresados? S o N\n");
+            printf("> Desea confirmar los dados ingresados? S o N\n");
+            printf("_____________________________________________\n");
             scanf(" %c", &c);
             while(c!='S'&&c!='s'&&c!='N'&&c!='n'){
-            printf("debe ingresar S o N\n");
+            printf("> Debe ingresar S o N\n");
+            printf("_____________________\n");
             scanf(" %c", &c);
             }
             if(c=='s'||c=='S'){
@@ -74,14 +89,34 @@ int lanzar_dado(int lanzada[P]){
             lanzada[i]=lanzada2[i];
             }
             }
-            for(int j=0; j<P; j++){
-            printf("%d ", lanzada[j]);
-            }
+            printf("\n");
+    for(i=0; i<P; i++){
+        printf("  -   ");
+    }
+    printf("\n");
+    for(i=0; i<P; i++){
+        printf("| %d | ", lanzada[i]);
+    }
+    printf("\n");
+    for(i=0; i<P; i++){
+        printf("  -   ");
+    }
+    printf("\n");
 
             }else if(l=='N'||l=='n'){
-        for(int j=0; j<P; j++){
-            printf("%d ", lanzada[j]);
-        }
+        printf("\n");
+    for(i=0; i<P; i++){
+        printf("  -   ");
+    }
+    printf("\n");
+    for(i=0; i<P; i++){
+        printf("| %d | ", lanzada[i]);
+    }
+    printf("\n");
+    for(i=0; i<P; i++){
+        printf("  -   ");
+    }
+    printf("\n");
         }
     }
 
@@ -95,10 +130,12 @@ int anotar(int lanzar_dado(int lanzada), int puntaje_del_juego[J]){
         int posicion_juego_anotado;
         char k;
         do{
-        printf("que juego desea anotar? 1, 2, 3, 4, 5, 6, G para Generala, E para Escalera,  F para Full, P para Poker\n");
+        printf("> Que juego desea anotar? 1, 2, 3, 4, 5, 6, G para Generala, E para Escalera,  F para Full, P para Poker\n");
+        printf("________________________________________________________________________________________________________\n");
         scanf(" %c", &k);
-        while(k<49||k>54&&k!='G'&&k!='E'&&k!='F'&&k!='P'){
-            printf("debe ingresar un juego valido\n");
+        while((k<49||k>54)&&k!='G'&&k!='E'&&k!='F'&&k!='P'){
+            printf("> Debe ingresar un juego valido\n");
+            printf("_______________________________\n");
             scanf(" %c", &k);
         }
         switch(k){
@@ -192,8 +229,12 @@ int anotar(int lanzar_dado(int lanzada), int puntaje_del_juego[J]){
             }
                 }
                 if(es==0&&lanzar_dado==2){
-                    printf("FIN DEL JUEGO EL JUGADOR SACO GENERALA SERVIDA, HA GANADO \n");
-                    puntaje_del_juego[6]=100;
+                    printf(" ___________________________________________________________");
+                    printf("\n");
+                    printf("| FIN DEL JUEGO EL JUGADOR SACO GENERALA SERVIDA, HA GANADO | \n");
+                    printf(" ___________________________________________________________\n");
+                    printf("\n");
+                    puntaje_del_juego[6]=1000;
                 }else if(es==0){
                     puntaje_del_juego[6]=puntaje_del_juego[6]+G;
                 }else if(es==1){
@@ -306,12 +347,28 @@ int anotar(int lanzar_dado(int lanzada), int puntaje_del_juego[J]){
 return 0;
 }
 int imprimir_puntajes(int puntaje_del_juego[J]){
+        for(int i=0; i<(J*4); i++){
+            printf("- ");
+        }
+        printf("\n");
         for(int i=0; i<J; i++){
+            printf("|");
             printf("%s\t", juego[i]);
+        }
+        printf("|");
+        printf("\n");
+        for(int i=0; i<(J*4); i++){
+            printf("- ");
         }
         printf("\n");
         for(int j=0; j<J; j++){
+            printf("|");
             printf("%d\t", puntaje_del_juego[j]);
+        }
+        printf("|");
+        printf("\n");
+        for(int i=0; i<(J*4); i++){
+            printf("- ");
         }
         return 0;
 }
@@ -319,43 +376,50 @@ int imprimir_puntajes(int puntaje_del_juego[J]){
 int main()
 {
         int cantidad_jugagores;
-        printf("Ingrese la cantidad de jugadores \n");
+
+        printf("> Ingrese la cantidad de jugadores: 1 o 2\n");
+        printf("_________________________________________\n");
         scanf("%d", &cantidad_jugagores);
-        while(cantidad_jugagores!=1&&cantidad_jugagores!=2){
-            printf("Debe ingresar 1 o 2 \n");
-            scanf("%d", &cantidad_jugagores);
-        }
         if(cantidad_jugagores==2){
         for(int i=0; i<J; i++){
-            if(jugador1[6]!=100){
-            printf("Tiro %d del jugador 1\n", i+1);
+            if(jugador1[6]!=1000){
+            printf("TIRO %d DEL JUGADOR 1\n", i+1);
+            printf("_____________________\n");
             anotar(lanzar_dado(lanzada), jugador1);
             printf("PUNTAJES DEL JUGADOR 1\n");
+            printf("______________________\n");
             imprimir_puntajes(jugador1);
             printf("\n");
             printf("PUNTAJES DEL JUGADOR 2\n");
+            printf("______________________\n");
             imprimir_puntajes(jugador2);
             printf("\n");
-            if(jugador2[6]!=100&&jugador1[6]!=100){
-            printf("Tiro %d del jugador 2\n", i+1);
+            if(jugador2[6]!=1000&&jugador1[6]!=1000){
+            printf("TIRO %d DEL JUGADOR 2\n", i+1);
+            printf("_______________________\n");
             anotar(lanzar_dado(lanzada), jugador2);
             printf("\n");
-            }
             printf("PUNTAJES DEL JUGADOR 1\n");
+            printf("______________________\n");
             imprimir_puntajes(jugador1);
             printf("\n");
             printf("PUNTAJES DEL JUGADOR 2\n");
+            printf("______________________\n");
             imprimir_puntajes(jugador2);
             printf("\n");
+            }
+
         }
         }
         }else if(cantidad_jugagores==1){
             for(int i=0; i<J; i++){
-            if(jugador1[6]!=100){
-            printf("Tiro %d del jugador 1\n", i+1);
+            if(jugador1[6]!=1000){
+            printf("TIRO %d DEL JUGADOR 1\n", i+1);
+            printf("_____________________\n");
             anotar(lanzar_dado(lanzada), jugador1);
             printf("\n");
             printf("PUNTAJES DEL JUGADOR 1\n");
+            printf("______________________\n");
             imprimir_puntajes(jugador1);
             printf("\n");
         }
