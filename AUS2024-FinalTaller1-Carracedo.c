@@ -64,7 +64,7 @@ int lanzar_dado(int lanzada[P]){
             cont1--;
             scanf("%d", &d);
             while(d<0||d>5){
-                printf(">Debe ingresar un numero entre el 1 y el 5 o 0 para finalizar \n");
+                printf("> Debe ingresar un numero entre el 1 y el 5 o 0 para finalizar \n");
                 printf("_____________________________________________________________\n");
                 scanf("%d", &d);
             }
