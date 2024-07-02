@@ -95,10 +95,13 @@ int anotar(int lanzar_dado(int lanzada), int puntaje_del_juego[J]){
         int posicion_juego_anotado;
         char k;
         do{
-        printf("que juego desea anotar? G para Generala, E para Escalera,  F para Full, P para Poker\n");
+        printf("que juego desea anotar? 1, 2, 3, 4, 5, 6, G para Generala, E para Escalera,  F para Full, P para Poker\n");
         scanf(" %c", &k);
+        while(k<49||k>54&&k!='G'&&k!='E'&&k!='F'&&k!='P'){
+            printf("debe ingresar un juego valido\n");
+            scanf(" %c", &k);
+        }
         switch(k){
-
         case '1':
 
             if(puntaje_del_juego[0]==-1){
@@ -336,7 +339,6 @@ int main()
             if(jugador2[6]!=100&&jugador1[6]!=100){
             printf("Tiro %d del jugador 2\n", i+1);
             anotar(lanzar_dado(lanzada), jugador2);
-            //imprimir_puntajes(jugador2);
             printf("\n");
             }
             printf("PUNTAJES DEL JUGADOR 1\n");
@@ -344,26 +346,19 @@ int main()
             printf("\n");
             printf("PUNTAJES DEL JUGADOR 2\n");
             imprimir_puntajes(jugador2);
-        }
-        }
-            printf("PUNTAJES DEL JUGADOR 1\n");
-            imprimir_puntajes(jugador1);
             printf("\n");
-            printf("PUNTAJES DEL JUGADOR 2\n");
-            imprimir_puntajes(jugador2);
+        }
+        }
         }else if(cantidad_jugagores==1){
             for(int i=0; i<J; i++){
             if(jugador1[6]!=100){
             printf("Tiro %d del jugador 1\n", i+1);
             anotar(lanzar_dado(lanzada), jugador1);
-            imprimir_puntajes(jugador1);
             printf("\n");
             printf("PUNTAJES DEL JUGADOR 1\n");
             imprimir_puntajes(jugador1);
             printf("\n");
         }
         }
-
-
 }
 }
