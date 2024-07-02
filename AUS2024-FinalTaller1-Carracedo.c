@@ -18,7 +18,7 @@ int lanzar_dado(int lanzada[P]){
     int i;
     char c;
     for(i=0; i<P; i++){
-        lanzada[i]=5;
+        lanzada[i]=(rand()%6)+1;
 
     }
     printf("\n");
