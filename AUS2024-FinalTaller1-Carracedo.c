@@ -523,6 +523,10 @@ int main()
             printf("\n");
         }
         }
+        if(jugador1[6]==1000){
+            printf("USTED HA SACADO GENERALA SERVIDA\n");
+            printf("________________________________\n");
+        }
         printf(" ._______________________.\n");
         printf(" |°EL JUEGO HA TERMINADO°|\n");
         printf(" ._______________________.\n");
