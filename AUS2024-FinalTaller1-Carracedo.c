@@ -388,7 +388,7 @@ int main()
         scanf(" %c", &jugadores);
         cantidad_jugagores=jugadores-'0';
         while(cantidad_jugagores!=1&&cantidad_jugagores!=2){
-            printf("> Debe ingresar 1 0 2\n");
+            printf("> Debe ingresar 1 o 2\n");
             scanf(" %c", &jugadores);
             cantidad_jugagores=jugadores-'0';
         }
