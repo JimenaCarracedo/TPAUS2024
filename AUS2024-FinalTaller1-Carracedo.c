@@ -354,7 +354,7 @@ return 0;
 }
 int imprimir_puntajes(int puntaje_del_juego[J]){
         for(int i=0; i<(J*4); i++){
-            printf("- ");
+            printf(" -");
         }
         printf("\n");
         for(int i=0; i<J; i++){
@@ -364,7 +364,7 @@ int imprimir_puntajes(int puntaje_del_juego[J]){
         printf("|");
         printf("\n");
         for(int i=0; i<(J*4); i++){
-            printf("- ");
+            printf(" -");
         }
         printf("\n");
         for(int j=0; j<J; j++){
@@ -374,7 +374,7 @@ int imprimir_puntajes(int puntaje_del_juego[J]){
         printf("|");
         printf("\n");
         for(int i=0; i<(J*4); i++){
-            printf("- ");
+            printf(" -");
         }
         return 0;
 }
