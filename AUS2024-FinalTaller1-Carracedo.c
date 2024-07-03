@@ -135,6 +135,8 @@ int anotar(int lanzar_dado(int lanzada), int puntaje_del_juego[J]){
         do{
         printf("> Que juego desea anotar? 1, 2, 3, 4, 5, 6, G para Generala, E para Escalera,  F para Full, P para Poker\n");
         printf("________________________________________________________________________________________________________\n");
+        imprimir_puntajes(puntaje_del_juego);
+        printf("\n");
         scanf(" %c", &k);
         while((k<49||k>54)&&k!='G'&&k!='g'&&k!='E'&&k!='e'&&k!='F'&&k!='f'&&k!='P'&&k!='p'){
             printf("> Debe ingresar un juego valido\n");
@@ -369,7 +371,11 @@ int imprimir_puntajes(int puntaje_del_juego[J]){
         printf("\n");
         for(int j=0; j<J; j++){
             printf("|");
+            if(puntaje_del_juego[j]==-1){
+                printf("*\t");
+            }else{
             printf("%d\t", puntaje_del_juego[j]);
+            }
         }
         printf("|");
         printf("\n");
@@ -379,20 +385,58 @@ int imprimir_puntajes(int puntaje_del_juego[J]){
         return 0;
 }
 
+int suma_parcial(int puntaje_del_juego[J]){
+            int suma=0;
+            int longitud_fija=4;
+            for(int i=0; i<J; i++){
+
+                if(puntaje_del_juego[i]!=-1){
+                        suma=suma+puntaje_del_juego[i];
+            }
+
+            }
+            printf("========\n");
+            printf("||%*d", longitud_fija, suma);
+            printf("||\n");
+            printf("========\n");
+
+}
+void quien_gano(int jugador1[J], int jugador2[J]){
+        int suma_total_jugador1;
+        int suma_total_jugador2;
+        for(int i=0; i<J; i++){
+
+                if(jugador1[i]!=-1){
+                        suma_total_jugador1=suma_total_jugador1+jugador1[i];
+            }
+                if(jugador2[i]!=-1){
+                        suma_total_jugador2=suma_total_jugador2+jugador2[i];
+            }
+
+            }
+        if(suma_total_jugador1>suma_total_jugador2){
+            printf("EL JUGADOR 1 HA GANADO!!!\n");
+            printf("_________________________\n");
+        }else{
+            printf("EL JUGADOR 2 HA GANADO!!!\n");
+            printf("_________________________\n");
+        }
+}
+
 int main()
 {
-        int cantidad_jugagores;
+        int cantidad_jugadores;
         char jugadores;
         printf("> Ingrese la cantidad de jugadores: 1 o 2\n");
         printf("_________________________________________\n");
         scanf(" %c", &jugadores);
-        cantidad_jugagores=jugadores-'0';
-        while(cantidad_jugagores!=1&&cantidad_jugagores!=2){
+        cantidad_jugadores=jugadores-'0';
+        while(cantidad_jugadores!=1&&cantidad_jugadores!=2){
             printf("> Debe ingresar 1 o 2\n");
             scanf(" %c", &jugadores);
-            cantidad_jugagores=jugadores-'0';
+            cantidad_jugadores=jugadores-'0';
         }
-        if(cantidad_jugagores==2){
+        if(cantidad_jugadores==2){
         for(int i=0; i<J; i++){
             if(jugador1[6]!=1000){
             printf("TIRO %d DEL JUGADOR 1\n", i+1);
@@ -405,6 +449,14 @@ int main()
             printf("PUNTAJES DEL JUGADOR 2\n");
             printf("______________________\n");
             imprimir_puntajes(jugador2);
+            printf("\n");
+            printf("PUNTAJE PARCIAL DEL JUGADOR 1\n");
+            printf("_____________________________\n");
+            printf(suma_parcial(jugador1));
+            printf("\n");
+            printf("PUNTAJE PARCIAL DEL JUGADOR 2\n");
+            printf("_____________________________\n");
+            printf(suma_parcial(jugador2));
             printf("\n");
             if(jugador2[6]!=1000&&jugador1[6]!=1000){
             printf("TIRO %d DEL JUGADOR 2\n", i+1);
@@ -419,11 +471,24 @@ int main()
             printf("______________________\n");
             imprimir_puntajes(jugador2);
             printf("\n");
+            printf("\n");
+            printf("PUNTAJE PARCIAL DEL JUGADOR 1\n");
+            printf("_____________________________\n");
+            printf(suma_parcial(jugador1));
+            printf("\n");
+            printf("PUNTAJE PARCIAL DEL JUGADOR 2\n");
+            printf("_____________________________\n");
+            printf(suma_parcial(jugador2));
+            printf("\n");
             }
 
         }
         }
-        }else if(cantidad_jugagores==1){
+        printf(" ._______________________.\n");
+        printf(" |°EL JUEGO HA TERMINADO°|\n");
+        printf(" ._______________________.\n");
+        quien_gano(jugador1, jugador2);
+        }else if(cantidad_jugadores==1){
             for(int i=0; i<J; i++){
             if(jugador1[6]!=1000){
             printf("TIRO %d DEL JUGADOR 1\n", i+1);
@@ -434,8 +499,15 @@ int main()
             printf("______________________\n");
             imprimir_puntajes(jugador1);
             printf("\n");
+            printf("\n");
+            printf("PUNTAJE PARCIAL DEL JUGADOR 1\n");
+            printf("_____________________________\n");
+            printf(suma_parcial(jugador1));
+            printf("\n");
         }
         }
+        printf(" ._______________________.\n");
+        printf(" |°EL JUEGO HA TERMINADO°|\n");
+        printf(" ._______________________.\n");
 }
-        printf("*EL JUEGO HA TERMINADO*\n");
 }
