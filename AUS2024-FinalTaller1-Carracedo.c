@@ -492,8 +492,10 @@ int main()
         printf(" ._______________________.\n");
         if(jugador1[6]==1000){
             printf("El jugador 1 ha sacado Generala Servida");
+            printf("\n");
         }else if(jugador2[6]==1000){
             printf("El jugador 2 ha sacado Generala Servida");
+            printf("\n");
         }else{
             printf("PUNTAJE DEL JUGADOR 1\n");
             printf("______________________\n");
