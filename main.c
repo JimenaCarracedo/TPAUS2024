@@ -37,7 +37,7 @@ int lanzar_dado(int lanzada[P]){
     char e;
     int cont=0;
     int cont1=2;
-    while(cont<2){
+    while(cont<2&&l!='N'&&l!='n'){
     cont++;
     printf("> Quiere volver a lanzar dados? S/N\n");
     printf("___________________________________\n");
@@ -539,15 +539,25 @@ int main()
         printf(" ._________________________.\n");
 
         char iniciar_juego='s';
+        char desea_salir='n';
         do{
 
         jugar();
 
-        printf("Desea jugar otra partida? S/N");
-        printf("\n");
+        printf("Desea jugar otra partida? S/N\n");
+        printf("_____________________________\n");
         scanf(" %c", &iniciar_juego);
-
+        if(iniciar_juego=='n'||iniciar_juego=='N'){
+            printf("Desea salir?S/N\n");
+            printf("_______________\n");
+            scanf(" %c", &desea_salir);
+        }
 
 }while(iniciar_juego=='S'||iniciar_juego=='s');
-        scanf("%c");
+
+        if(desea_salir=='s'||desea_salir=='S'){
+            printf("Hasta la proxima partida!!!\n");
+            printf("___________________________\n");
+        }
+        scanf(" %c");
 }
