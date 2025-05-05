@@ -10,6 +10,8 @@
 char *juego[J]={"1", "2", "3", "4", "5", "6", "G", "E", "P", "F"};
 int lanzada[P];
 int puntaje_del_juego[J];
+char nombre_jugador1[50];
+char nombre_jugador2[50];
 int lanzar_dado(int lanzada[P]){
 
     srand(time(NULL));
@@ -418,11 +420,14 @@ void quien_gano(int jugador1[J], int jugador2[J]){
             }
             }
         if(suma_total_jugador1>suma_total_jugador2){
-            printf("EL JUGADOR 1 HA GANADO!!!\n");
+            printf("HA GANADO: %s\n", nombre_jugador1);
+            printf("__________\n");
+        }else if(suma_total_jugador1<suma_total_jugador2){
+            printf("HA GANADO: %s\n", nombre_jugador2);
             printf("_________________________\n");
-        }else{
-            printf("EL JUGADOR 2 HA GANADO!!!\n");
-            printf("_________________________\n");
+        }else if(suma_total_jugador1==suma_total_jugador2){
+            printf("LOS JUGADORES HAN EMPATADO!!!\n");
+            printf("_____________________________\n");
         }
 }
 int jugar(){
@@ -440,47 +445,51 @@ int jugar(){
             cantidad_jugadores=jugadores-'0';
         }
         if(cantidad_jugadores==2){
+            printf("Ingrese el nombre del primer jugador\n");
+            scanf("%s", nombre_jugador1);
+            printf("Ingrese el nombre del segundo jugador\n");
+            scanf("%s", nombre_jugador2);
         for(int i=0; i<J; i++){
             if(jugador1[6]!=1000&&jugador2[6]!=1000){
-            printf("TIRO %d DEL JUGADOR 1\n", i+1);
-            printf("_____________________\n");
+            printf("TIRO %d DEL JUGADOR %s\n", i+1, nombre_jugador1);
+            printf("___________________\n");
             anotar(lanzar_dado(lanzada), jugador1);
-            printf("PUNTAJES DEL JUGADOR 1\n");
-            printf("______________________\n");
+            printf("PUNTAJES DE %s\n", nombre_jugador1);
+            printf("___________\n");
             imprimir_puntajes(jugador1);
             printf("\n");
-            printf("PUNTAJES DEL JUGADOR 2\n");
-            printf("______________________\n");
+            printf("PUNTAJES DE %s\n", nombre_jugador2);
+            printf("___________\n");
             imprimir_puntajes(jugador2);
             printf("\n");
-            printf("PUNTAJE PARCIAL DEL JUGADOR 1\n");
-            printf("_____________________________\n");
+            printf("PUNTAJE PARCIAL DE %s\n", nombre_jugador1);
+            printf("__________________\n");
             printf(suma_parcial(jugador1));
             printf("\n");
-            printf("PUNTAJE PARCIAL DEL JUGADOR 2\n");
-            printf("_____________________________\n");
+            printf("PUNTAJE PARCIAL DE %s\n", nombre_jugador2);
+            printf("__________________\n");
             printf(suma_parcial(jugador2));
             printf("\n");
             if(jugador2[6]!=1000&&jugador1[6]!=1000){
-            printf("TIRO %d DEL JUGADOR 2\n", i+1);
-            printf("_______________________\n");
+            printf("TIRO %d DEL JUGADOR %s\n", i+1, nombre_jugador2);
+            printf("___________________\n");
             anotar(lanzar_dado(lanzada), jugador2);
             printf("\n");
-            printf("PUNTAJES DEL JUGADOR 1\n");
-            printf("______________________\n");
+            printf("PUNTAJES DEL JUGADOR %s\n", nombre_jugador1);
+            printf("____________________\n");
             imprimir_puntajes(jugador1);
             printf("\n");
-            printf("PUNTAJES DEL JUGADOR 2\n");
-            printf("______________________\n");
+            printf("PUNTAJES DEL JUGADOR %s\n", nombre_jugador2);
+            printf("____________________\n");
             imprimir_puntajes(jugador2);
             printf("\n");
             printf("\n");
-            printf("PUNTAJE PARCIAL DEL JUGADOR 1\n");
-            printf("_____________________________\n");
+            printf("PUNTAJE PARCIAL DEL JUGADOR %s\n", nombre_jugador1);
+            printf("___________________________\n");
             printf(suma_parcial(jugador1));
             printf("\n");
-            printf("PUNTAJE PARCIAL DEL JUGADOR 2\n");
-            printf("_____________________________\n");
+            printf("PUNTAJE PARCIAL DEL JUGADOR %s\n", nombre_jugador2);
+            printf("___________________________\n");
             printf(suma_parcial(jugador2));
             printf("\n");
             }
@@ -490,34 +499,34 @@ int jugar(){
         printf(" |°EL JUEGO HA TERMINADO°|\n");
         printf(" ._______________________.\n");
         if(jugador1[6]==1000){
-            printf("El jugador 1 ha sacado Generala Servida");
+            printf("El jugador %s ha sacado Generala Servida", nombre_jugador1);
             printf("\n");
         }else if(jugador2[6]==1000){
-            printf("El jugador 2 ha sacado Generala Servida");
+            printf("El jugador %s ha sacado Generala Servida", nombre_jugador2);
             printf("\n");
         }else{
-            printf("PUNTAJE DEL JUGADOR 1\n");
-            printf("______________________\n");
+            printf("PUNTAJE DEL JUGADOR %s\n", nombre_jugador1);
+            printf("___________________\n");
             suma_parcial(jugador1);
-        printf("PUNTAJE DEL JUGADOR 2\n");
-        printf("______________________\n");
+        printf("PUNTAJE DEL JUGADOR %s\n", nombre_jugador2);
+        printf("___________________\n");
         suma_parcial(jugador2);
         quien_gano(jugador1, jugador2);
         }
         }else if(cantidad_jugadores==1){
             for(int i=0; i<J; i++){
             if(jugador1[6]!=1000){
-            printf("TIRO %d DEL JUGADOR 1\n", i+1);
-            printf("_____________________\n");
+            printf("TIRO %d\n", i+1);
+            printf("_______\n");
             anotar(lanzar_dado(lanzada), jugador1);
             printf("\n");
-            printf("PUNTAJES DEL JUGADOR 1\n");
-            printf("______________________\n");
+            printf("PUNTAJES DEL JUGADOR\n");
+            printf("____________________\n");
             imprimir_puntajes(jugador1);
             printf("\n");
             printf("\n");
-            printf("PUNTAJE PARCIAL DEL JUGADOR 1\n");
-            printf("_____________________________\n");
+            printf("PUNTAJE PARCIAL DEL JUGADOR\n");
+            printf("___________________________\n");
             printf(suma_parcial(jugador1));
             printf("\n");
         }
