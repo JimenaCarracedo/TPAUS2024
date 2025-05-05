@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include <time.h>
 #define P (5)
-#define J (10)
+#define J (11)
 #define K (40)
 #define G (60)
+#define GD (120)
 #define E (20)
 #define F (30)
-char *juego[J]={"1", "2", "3", "4", "5", "6", "G", "E", "P", "F"};
+char *juego[J]={"1", "2", "3", "4", "5", "6", "G", "E", "P", "F", "GD"};
 int lanzada[P];
 int puntaje_del_juego[J];
 char nombre_jugador1[50];
@@ -34,23 +35,6 @@ int lanzar_dado(int lanzada[P]){
     for(i=0; i<P; i++){
         printf(". - .    ");
     }
-    printf("\n");
-    char flecha=94;
-    for(i=0; i<P; i++){
-        printf("  %c      ", flecha);
-
-    }
-    printf("\n");
-    for(i=0; i<P; i++){
-        printf("  |      ");
-    }
-    printf("\n");
-    for(i=0; i<P; i++){
-
-        printf("Dado %d   ", i+1);
-    }
-    printf("\n");
-    printf("\n");
     printf("\n");
     char l;
     int d;
@@ -144,7 +128,44 @@ int lanzar_dado(int lanzada[P]){
 printf("\n");
 return cont1;
     }
+void intro(){
+    srand(time(NULL));
+    int i;
+    char c;
+    for(i=0; i<P; i++){
+        lanzada[i]=(rand()%6)+1;
 
+    }
+    printf("\n");
+     printf("\n");
+    for(i=0; i<P; i++){
+        printf(". - .    ");
+    }
+    printf("\n");
+    for(i=0; i<P; i++){
+        printf("| %d |    ", lanzada[i]);
+    }
+    printf("\n");
+    for(i=0; i<P; i++){
+        printf(". - .    ");
+    }
+    printf("\n");
+    char flecha=94;
+    for(i=0; i<P; i++){
+        printf("  %c      ", flecha);
+
+    }
+    printf("\n");
+    for(i=0; i<P; i++){
+        printf("  |      ");
+    }
+    printf("\n");
+    for(i=0; i<P; i++){
+
+        printf("Dado %d   ", i+1);
+    }
+    printf("\n");
+}
 int anotar(int lanzar_dado(int lanzada), int puntaje_del_juego[J]){
         int j;
         int i;
@@ -152,12 +173,12 @@ int anotar(int lanzar_dado(int lanzada), int puntaje_del_juego[J]){
         char k;
         do{
 
-        printf("> Que juego desea anotar? 1, 2, 3, 4, 5, 6, G para Generala, E para Escalera,  F para Full, P para Poker\n");
-        printf("________________________________________________________________________________________________________\n");
+        printf("> Que juego desea anotar? 1, 2, 3, 4, 5, 6, G para Generala, E para Escalera,  F para Full, P para Poker, D para Generala Doble\n");
+        printf("________________________________________________________________________________________________________________________________\n");
         imprimir_puntajes(puntaje_del_juego);
         printf("\n");
         scanf(" %c", &k);
-        while((k<49||k>54)&&k!='G'&&k!='g'&&k!='E'&&k!='e'&&k!='F'&&k!='f'&&k!='P'&&k!='p'){
+        while((k<49||k>54)&&k!='G'&&k!='g'&&k!='E'&&k!='e'&&k!='F'&&k!='f'&&k!='P'&&k!='p'&&k!='D'&&k!='d'){
             printf("> Debe ingresar un juego valido\n");
             printf("_______________________________\n");
             scanf(" %c", &k);
@@ -241,9 +262,8 @@ int anotar(int lanzar_dado(int lanzada), int puntaje_del_juego[J]){
             break;
         case 'G':
         case 'g':
-
             if(puntaje_del_juego[6]==-1){
-            posicion_juego_anotado=6;
+        posicion_juego_anotado=6;
             puntaje_del_juego[6]=0;
             int es=0;
             for(i=0; i<P; i++){
@@ -265,6 +285,34 @@ int anotar(int lanzar_dado(int lanzada), int puntaje_del_juego[J]){
                 }
                 }else if(es==1){
                     puntaje_del_juego[6]=0;
+                }
+            }
+            break;
+        case 'D':
+        case 'd':
+            if(puntaje_del_juego[10]==-1){
+        posicion_juego_anotado=10;
+            puntaje_del_juego[10]=0;
+            int es=0;
+            for(i=0; i<P; i++){
+                    for(j=i+1; j<P; j++){
+                if(lanzada[i]!=lanzada[j]){
+                es=1;
+                }
+            }
+                }
+                if(es==0&&puntaje_del_juego[6]==G){
+                    puntaje_del_juego[10]=puntaje_del_juego[10]+GD;
+                if(es==0&&lanzar_dado==2){
+                    printf(" ___________________________________________________________");
+                    printf("\n");
+                    printf("| FIN DEL JUEGO EL JUGADOR SACO GENERALA SERVIDA, HA GANADO | \n");
+                    printf(" ___________________________________________________________\n");
+                    printf("\n");
+                    puntaje_del_juego[10]=1000;
+                }
+                }else if(es==1){
+                    puntaje_del_juego[10]=0;
                 }
             }
             break;
@@ -451,8 +499,8 @@ void quien_gano(int jugador1[J], int jugador2[J]){
 int jugar(){
         int cantidad_jugadores;
         char jugadores;
-        int jugador1[J]={-1,-1,-1,-1,-1,-1,-1,-1, -1,-1};
-        int jugador2[J]={-1,-1,-1,-1,-1,-1,-1,-1, -1,-1};
+        int jugador1[J]={-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,-1};
+        int jugador2[J]={-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,-1};
         printf("> Ingrese la cantidad de jugadores: 1 o 2\n");
         printf("_________________________________________\n");
         scanf(" %c", &jugadores);
@@ -564,7 +612,7 @@ int main()
         printf(" ._________________________.\n");
         printf(" |°BIENVENIDO A LA GENERALA°|\n");
         printf(" ._________________________.\n");
-
+        intro();
         char iniciar_juego='s';
         char desea_salir='n';
         do{
