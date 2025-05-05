@@ -22,17 +22,35 @@ int lanzar_dado(int lanzada[P]){
 
     }
     printf("\n");
+     printf("\n");
     for(i=0; i<P; i++){
-        printf(". - . ");
+        printf(". - .    ");
     }
     printf("\n");
     for(i=0; i<P; i++){
-        printf("| %d | ", lanzada[i]);
+        printf("| %d |    ", lanzada[i]);
     }
     printf("\n");
     for(i=0; i<P; i++){
-        printf(". - . ");
+        printf(". - .    ");
     }
+    printf("\n");
+    char flecha=94;
+    for(i=0; i<P; i++){
+        printf("  %c      ", flecha);
+
+    }
+    printf("\n");
+    for(i=0; i<P; i++){
+        printf("  |      ");
+    }
+    printf("\n");
+    for(i=0; i<P; i++){
+
+        printf("Dado %d   ", i+1);
+    }
+    printf("\n");
+    printf("\n");
     printf("\n");
     char l;
     int d;
