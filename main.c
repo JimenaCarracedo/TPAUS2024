@@ -96,30 +96,30 @@ int lanzar_dado(int lanzada[P]){
             }
             printf("\n");
     for(i=0; i<P; i++){
-        printf(". - . ");
+        printf(". - .    ");
     }
     printf("\n");
     for(i=0; i<P; i++){
-        printf("| %d | ", lanzada[i]);
+        printf("| %d |    ", lanzada[i]);
     }
     printf("\n");
     for(i=0; i<P; i++){
-        printf(". - . ");
+        printf(". - .    ");
     }
     printf("\n");
 
             }else if(l=='N'||l=='n'){
         printf("\n");
     for(i=0; i<P; i++){
-        printf(". - . ");
+        printf(". - .    ");
     }
     printf("\n");
     for(i=0; i<P; i++){
-        printf("| %d | ", lanzada[i]);
+        printf("| %d |    ", lanzada[i]);
     }
     printf("\n");
     for(i=0; i<P; i++){
-        printf(". - . ");
+        printf(". - .    ");
     }
     printf("\n");
         }
@@ -136,7 +136,9 @@ void intro(){
         lanzada[i]=(rand()%6)+1;
 
     }
-    printf("\n");
+     printf("Para lanzar los dados se debera tener en cuenta su posicion y no su valor.\n");
+     printf("De la siguiente manera:\n");
+     printf("\n");
      printf("\n");
     for(i=0; i<P; i++){
         printf(". - .    ");
@@ -164,6 +166,8 @@ void intro(){
 
         printf("Dado %d   ", i+1);
     }
+    printf("\n");
+    printf("\n");
     printf("\n");
 }
 int anotar(int lanzar_dado(int lanzada), int puntaje_del_juego[J]){
